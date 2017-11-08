@@ -1,0 +1,15 @@
+A faire pour préparer le RPI (documentation à réaliser)
+- installation de rasbian + màj
+- activation SSH
+- faire de la place sur rasbian 
+	(nettoyer le superflux)
+- install / MàJ Python
+- dépendances python 
+	- pygame
+	- PIL
+	- ...
+- setup picam
+- Cablage GPIO
+- Mise à jour de l'horloge auto sur internet
+
+(et sans doute d'autres choses qui m'échappent)
