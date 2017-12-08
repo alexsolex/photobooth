@@ -390,9 +390,6 @@ class Capture(object):
         if USE_GPIO:
             self.start_event_detection();
 
-    def screenshot(self,filename):
-        pygame.image.save(self.display, filename+".jpeg")
-
     def btn_pushed(self,channel):
         """a button on GPIO has been pushed"""
         #time.sleep(0.4)
@@ -675,7 +672,6 @@ class Capture(object):
         #clear the timer
         pygame.time.set_timer(IdUserEvent,0)#1000 * config.TIMEOUT_NO_ACTION
         #should go back to wait status
-        self.screenshot("etape%s"%self.status)
         self.NextStatus = Status.WAIT
         
     def main(self):
@@ -727,12 +723,10 @@ class Capture(object):
                             self.start_timer(config.TIME_BEFORE_SHOOT)
                             self.flash = True;
                             self.NextStatus = Status.SHOOT
-                            self.screenshot("etape%s"%self.status)
-
+                            
                         elif self.status == Status.READY:
                             self.start_timer(config.TIME_BEFORE_SHOOT)
                             self.flash = True;
-                            self.screenshot("etape%s"%self.status)
                             self.NextStatus = Status.SHOOT
                         
                         elif self.status == Status.SHOOT:
@@ -752,11 +746,9 @@ class Capture(object):
                             self.NextStatus = Status.WAIT
 
                         elif self.status == Status.SEND:
-                            self.screenshot("etape%s"%self.status)
                             self.NextStatus = Status.WAIT
 
                         elif self.status == Status.SENT:
-                            self.screenshot("etape%s"%self.status)
                             self.NextStatus = Status.WAIT
                         
                         elif self.status == Status.SLIDESHOW:
@@ -769,7 +761,6 @@ class Capture(object):
                     if (e.type == KEYDOWN and e.key == K_b) or e.type == self.USEREVENT_BTNB or PUSHB:
                         if self.status == Status.APPROVE:
                             if self.canceled == False:
-                                self.screenshot("etape%s"%self.status)
                                 self.NextStatus = Status.SEND
                                 pygame.time.set_timer(self.USEREVENT_TIMEOUT_APPROVAL,0)    # arrêt du timer d'approbation
                                 pygame.time.set_timer(self.USEREVENT_TIMEOUT_GLOBAL,0)      # arrêt du timer global d'annulation
@@ -802,7 +793,6 @@ class Capture(object):
                         self.message = errorip
                     self.get_and_flip()
                     time.sleep(2)
-                self.screenshot("accueil")    
                 self.NextStatus = Status.WAIT
                 
             elif self.status == Status.WAIT:
@@ -823,7 +813,6 @@ class Capture(object):
                 else:
                     pygame.time.set_timer(self.USEREVENT_TIMEOUT_GLOBAL,0) 
                     self.NextStatus = Status.APPROVE
-                    self.screenshot("shooting")
                     self.message = ":)"
                     self.stop_timer()
                     
@@ -892,6 +881,8 @@ class Capture(object):
                     self.message = "Sauvegarde de la photo"
                     self.get_and_flip()
                     dst = os.path.join( config.PHOTOS_PATH , self.newFilename)
+                    if config.KEEP_ORIGINAL_PIC:
+                        shutil.copy( TEMPORARY_FILENAME , os.path.join( config.PHOTOS_PATH ,  "IMG_{0}_RAW.{1}".format(self.time_shoot,POLA_FILENAME.split(".")[-1])) )
                     if not os.path.exists( dst ):
                         if RENDER_AS_POLAROID:
                             shutil.copy( POLA_FILENAME , dst )

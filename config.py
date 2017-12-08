@@ -7,6 +7,9 @@ SAVE_IN_FOLDER = True
 # Specify the local relative folder where the pics will be saved
 PHOTOS_PATH = "shots"
 
+# Keep the original picture with no photomontage
+KEEP_ORIGINAL_PIC = False
+
 DISPLAY_IP_ADDRESS = True
 
 # We use Exif meta datas to store informations about the picture. Please set a comment to set in the exifs metas here
