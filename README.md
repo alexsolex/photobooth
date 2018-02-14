@@ -59,10 +59,10 @@ __Prérequis :__
 
 1. Installer Raspbian sur la carte microSD et procéder à toutes les mises à jours  (TODO)
 0. Installer/mettre à jour les librairies python :
-- picamera  (TODO)
-- pygame  (TODO)
-- GPIO  (TODO)
-0. Configurer le raspberry (TODO)
+   - picamera  (TODO)
+   - pygame  (TODO)
+   - GPIO  (TODO)
+2. Configurer le raspberry (TODO)
 0.
 0.
 0. Lancer le photobooth automatiquement au démarrage (TODO)
