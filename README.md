@@ -13,6 +13,8 @@ Cette liste peut être adaptée selon les besoins, elle ne concerne que le maté
 * 1 x Raspberry PI 3  
 https://www.amazon.fr/Raspberry-Pi-Carte-M%C3%A8re-Model/dp/B01CD5VC92
 
+* 1 x Carte Micro SD classe 10
+
 * 1 x Alimentation adaptée au Raspi (5V 3A)  
 https://www.amazon.fr/Aukru-Chargeur-Adaptateur-Alimentation-Raspberry/dp/B01566WOAG
 
