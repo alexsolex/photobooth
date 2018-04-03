@@ -882,7 +882,9 @@ class Capture(object):
                     self.get_and_flip()
                     dst = os.path.join( config.PHOTOS_PATH , self.newFilename)
                     if config.KEEP_ORIGINAL_PIC:
-                        shutil.copy( TEMPORARY_FILENAME , os.path.join( config.PHOTOS_PATH ,  "IMG_{0}_RAW.{1}".format(self.time_shoot,POLA_FILENAME.split(".")[-1])) )
+                        if not os.path.exists( 'RAW' ):
+                            os.makedirs('RAW')
+                        shutil.copy( TEMPORARY_FILENAME , os.path.join( 'RAW' ,  "IMG_{0}_RAW.{1}".format(self.time_shoot,POLA_FILENAME.split(".")[-1])) )
                     if not os.path.exists( dst ):
                         if RENDER_AS_POLAROID:
                             shutil.copy( POLA_FILENAME , dst )
