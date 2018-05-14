@@ -1,6 +1,7 @@
-# photobooth
+photobooth
+==========
 
-Photobooth made for raspberry pi
+_**Photobooth made for raspberry pi**_
 
 ## matériel
 
@@ -82,11 +83,33 @@ __Prérequis :__
   * RPi.GPIO (0.6.3)
   * twython (3.3.0)
 
-3. Configurer le raspberry (TODO)
+#### Configurer le raspberry (TODO)
 
-0.
+0. Todo
 
-0.
+#### Configuration du photobooth
+
+##### Envoyer les photos sur un compte dropbox
+
+1. Aller sur https://www.dropbox.com/developers/
+
+2. Créer une app :
+
+* ChooseAPI : Dropbox API
+* Choose the type of access you need : App folder
+* Name your app : (doit être unique) mySuperPhotoboothDropbox
+* [Create app]
+
+3. Chercher `Generated access token`, puis cliquer sur `[Generate]` pour récupérer le token (chaine alphanumérique)
+
+Configurer Dropbox pour votre photobooth :
+
+Editer le fichier `setup.py`, trouver et modifier les lignes comme suit
+
+> `DROPBOX_UPLOAD = True`  
+> `dropboxToken = "coller_ici_le_token_généré_précédemment"`
+
+
 
 0. Lancer le photobooth automatiquement au démarrage (TODO)
 
@@ -96,13 +119,26 @@ Editer le fichier /etc/rc.local et ajouter les commandes :
 
 ### Hardware (WIP)
 
-__Nota__ : Je n'expliquerais pas ici la construction du boitier, chacun pouvant le réaliser selon ses compétences, ses besoins ... Cependant voici quelques remarques constaté avec l'usage :
+#### Notes préliminaires
+Je n'expliquerais pas ici la construction du boitier, chacun pouvant le réaliser selon ses compétences, ses besoins ... Cependant voici quelques remarques constaté avec l'usage :
 
 * Pensez à la stabilité du photobooth. Il va être manipulé par plein de monde et certainement aussi des enfants !
 * Pensez aux enfants : si les boutons sont trop haut, les enfants risquent de se mettre en danger (monter sur une chaise) ou encore de s'accrocher au photobooth pour pouvoir le manipuler
 * Les utilisateurs regarderont l'écran pendant la prise de vue mais pas la caméra : La caméra devra être au plus proche de l'écran de manière à ce que le regard ne semble pas trop décalé sur la photo.
 * Les lampes s'allumeront pendant la prise de vue (pour adapter l'autofocus) ce qui éblouira les utilisateurs. Pensez-y dans la conception et adaptez la position des lumières pour un compromis éclairage suffisant, mais pas trop éblouissant.
 
-#### Schéma de cablage
+#### Câblage
 TODO : mettre un lien vers le schéma général de cablage
 
+Relais pour le flash (3 fils):  
+\+ ---> pin #2 (5v PWR)  
+\- ---> pin #14 (GND)  
+s ---> pin #15 (GPIO22)
+
+Bouton rouge (prise de vue / annulation) :  
+Pin #6 (GND)  
+Pin #7 (GPIO4)
+
+Bouton bleu (enregistrement / diaporama) :  
+Pin #8 (GPIO14)  
+Pin #9 (GND)
