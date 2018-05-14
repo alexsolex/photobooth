@@ -122,7 +122,14 @@ DROPBOX_UPLOAD = False
 #   False : bypass the QRcode generation
 SHOW_DROPBOX_QRCODE = False
 
-# TODO : indiquer comment trouver son token dropbox
+# Aller sur https://www.dropbox.com/developers/
+#   Créer une app :
+#       ChooseAPI : Dropbox API
+#       Choose the type of access you need : App folder
+#       Name your app : (doit être unique) mySuperPhotoboothDropbox
+#       [Create app]
+#   Chercher Generated access token, puis cliquer sur [Generate]
+#       pour récupérer le token (chaine alphanumérique)
 dropboxToken = "...."
 
 # Compte à rebourg avant la prise de vue
