@@ -10,33 +10,42 @@ Cette liste peut être adaptée selon les besoins, elle ne concerne que le maté
 
 * 1 x Cable écran avec adaptateur éventuel vers HDMI (dépend de la connectique de l'écran)
 
-* 1 x Raspberry PI 3  
+* 1 x Raspberry PI 3
+
 https://www.amazon.fr/Raspberry-Pi-Carte-M%C3%A8re-Model/dp/B01CD5VC92
 
 * 1 x Carte Micro SD classe 10
 
-* 1 x Alimentation adaptée au Raspi (5V 3A)  
+* 1 x Alimentation adaptée au Raspi (5V 3A)
+
 https://www.amazon.fr/Aukru-Chargeur-Adaptateur-Alimentation-Raspberry/dp/B01566WOAG
 
-* 1 x Pi Camera avec sa nappe  
+* 1 x Pi Camera avec sa nappe
+
 https://www.amazon.fr/Raspberry-Pi-1080p-Module-Cam%C3%A9ra/dp/B01ER2SKFS
 
-* 1 x Relais 5V - 220V/10A  
+* 1 x Relais 5V - 220V/10A
+
 https://www.amazon.fr/dp/B019GTTS3K/
 
-* 2 x lampes GU10 avec supports (par exemple mais peut être remplacé par l'éclairage de son choix, voir pourquoi pas une lampe extérieur, attention au courant consommé par les lampes qui doit être inférieur au courant que peut piloter le relais )  
+* 2 x lampes GU10 avec supports (par exemple mais peut être remplacé par l'éclairage de son choix, voir pourquoi pas une lampe extérieur, attention au courant consommé par les lampes qui doit être inférieur au courant que peut piloter le relais )
+
 https://www.amazon.fr/Projecteur-Encastr%C3%A9-Douille-Ampoule-Halog%C3%A8ne/dp/B01JLNBVDQ
 
-* 1 x connecteur c14 avec fusible et interrupteur   
+* 1 x connecteur c14 avec fusible et interrupteur
+
 https://www.amazon.fr/alimentation-interrupteur-module-admission-broches/dp/B00F4MFMXE
 
-* 1 x cable alimentation 220V PC C13  
+* 1 x cable alimentation 220V PC C13
+
 https://www.amazon.fr/Dexlan-Cordon-électrique-secteur-standard/dp/B0009M14YK
 
-* 2 x boutons poussoirs type arcade  
+* 2 x boutons poussoirs type arcade
+
 https://www.amazon.fr/Cewaal-Shaped-Convexity-Replacement-Illuminated/dp/B075SBK17G
 
-* Des fils de cablage pour connecter sur le port GPIO du RPi 
+* Des fils de cablage pour connecter sur le port GPIO du RPi
+
 https://www.amazon.fr/s/ref=nb_sb_noss?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&url=search-alias%3Daps&field-keywords=fils+arduino&rh=i%3Aaps%2Ck%3Afils+arduino
 
 __Autre matériel__
@@ -47,6 +56,7 @@ __Autre matériel__
 * un fer à souder / de l'étain
 
 ## Installation (WIP)
+
 __Prérequis :__
 * J'ai choisi volontairement de ne pas rentrer dans les détails de l'utilisation d'un raspberry pi.
 * Raccorder son raspberry Pi au réseau et à internet pour effectuer les mises à jours et autres installations
@@ -58,16 +68,34 @@ __Prérequis :__
 
 
 1. Installer Raspbian sur la carte microSD et procéder à toutes les mises à jours  (TODO)
-0. Installer/mettre à jour les librairies python :
-   - picamera  (TODO)
-   - pygame  (TODO)
-   - GPIO  (TODO)
-2. Configurer le raspberry (TODO)
+2. Installer/mettre à jour les librairies python : (version indicatives basées sur mon setup d'origine)
+
+  * dropbox (4.0)
+  * facebook-sdk (2.0.0)
+  * gpiozero (1.3.2)
+  * picamera (1.13)
+  * piexif (1.0.8)
+  * Pillow (2.6.1)
+  * pip (8.1.2)
+  * pygame (1.9.2a0)
+  * qrcode (5.0.1)
+  * RPi.GPIO (0.6.3)
+  * twython (3.3.0)
+
+3. Configurer le raspberry (TODO)
+
 0.
+
 0.
+
 0. Lancer le photobooth automatiquement au démarrage (TODO)
 
+Editer le fichier /etc/rc.local et ajouter les commandes :
+    cd /home/pi/photoboothfolder
+    sudo python photobooth.py
+
 ### Hardware (WIP)
+
 __Nota__ : Je n'expliquerais pas ici la construction du boitier, chacun pouvant le réaliser selon ses compétences, ses besoins ... Cependant voici quelques remarques constaté avec l'usage :
 
 * Pensez à la stabilité du photobooth. Il va être manipulé par plein de monde et certainement aussi des enfants !
