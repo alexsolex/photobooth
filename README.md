@@ -68,26 +68,68 @@ __Prérequis :__
 ### Software (WIP)
 
 
-1. Installer Raspbian sur la carte microSD et procéder à toutes les mises à jours  (TODO)
-2. Installer/mettre à jour les librairies python : (version indicatives basées sur mon setup d'origine)
+1. Installer Raspbian sur la carte microSD et procéder à toutes les mises à jours
+0. Installer/mettre à jour les librairies python : (version indicatives basées sur mon setup d'origine)
 
-  * dropbox (4.0)
-  * facebook-sdk (2.0.0)
+  * pip (8.1.2)
+  * pygame (1.9.2a0) (déjà installé sur raspbian)
+  * dropbox (4.0)  
+  `sudo pip install dropbox`
+
+  * facebook-sdk (2.0.0)  
+  `sudo pip install facebook-sdk`
   * gpiozero (1.3.2)
   * picamera (1.13)
-  * piexif (1.0.8)
-  * Pillow (2.6.1)
-  * pip (8.1.2)
-  * pygame (1.9.2a0)
-  * qrcode (5.0.1)
-  * RPi.GPIO (0.6.3)
-  * twython (3.3.0)
+  * piexif (1.0.8) !! ATTENTION !! La version 1.0.10 ne fonctionne pas  
+  `sudo pip install piexif==1.0.8`
+  * Pillow (2.6.1)  
+  `sudo pip install pillow`
+  * qrcode (5.0.1)  
+  `sudo pip install qrcode`
+  * RPi.GPIO (0.6.3)  
+  `sudo pip install rpi.gpio`
+  * twython (3.3.0)  
+  `sudo pip install twython` 
+0. installer le script photobooth  
+`sudo git clone https://github.com/alexsolex/photobooth.git`
+0. enlever le fichier dummy.txt du répertoire shots (à corriger)  
+`sudo rm dummy.txt`
 
 #### Configurer le raspberry (TODO)
 
-0. Todo
+1. configurer un hostname afin d'y accéder lorsqu'on ne connait pas son adresse ip :  
+`sudo nano /etc/hosts`  
+Changer le nom en  regard de l'adresse 127.0.1.1 par celui qui vous convient :  
+`127.0.1.1       photobooth`  
+Puis remplacer le hostname
+`sudo nano /etc/hostname`  
+Et finalement  
+`sudo /etc/init.d/hostname.sh`  
+`sudo reboot`  
+
+0. Installer un mDNS pour diffuser le hostname sur le réseau  
+`sudo apt-get install avahi-daemon`
+
+0. Désinstaller la suite libreoffice ainsi que d'autres applications inutiles.  
+`sudo apt-get remove --purge libreoffice*`  
+`sudo apt-get clean`  
+`sudo apt-get autoremove`  
+
+0. Configurer la camera
+Brancher la picamera et lancer l'utilitaire `raspi-config` puis activer la camera (option 5 sur enable).  
+Redémarrer le raspberry pi.  
+Editer le fichier /etc/modules  
+`sudo nano /etc/modules`  
+Contenu de référence de ce fichier  
+`i2c-dev`  
+`bcm2835-v4l2`  
+
+0. 
 
 #### Configuration du photobooth
+
+
+
 
 ##### Envoyer les photos sur un compte dropbox
 
@@ -113,9 +155,9 @@ Editer le fichier `setup.py`, trouver et modifier les lignes comme suit
 
 0. Lancer le photobooth automatiquement au démarrage (TODO)
 
-Editer le fichier /etc/rc.local et ajouter les commandes :
-    cd /home/pi/photoboothfolder
-    sudo python photobooth.py
+Editer le fichier /etc/rc.local et ajouter les commandes :  
+>    `cd /home/pi/photoboothfolder`  
+>    `sudo python photobooth.py`  
 
 ### Hardware (WIP)
 
