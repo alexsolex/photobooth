@@ -59,7 +59,7 @@ __Autre matériel__
 ## Installation (WIP)
 
 __Prérequis :__
-* J'ai choisi volontairement de ne pas rentrer dans les détails de l'utilisation d'un raspberry pi.
+* J'ai choisi volontairement de ne pas rentrer dans les détails de l'utilisation d'un raspberry pi.  
 * Raccorder son raspberry Pi au réseau et à internet pour effectuer les mises à jours et autres installations
 * Brancher clavier/souris et écran ou se connecter en SSH pour effectuer les manipulations
 * Avoir quelques notions d'électricité (ATTENTION quand vous manipulez du 220v !)
@@ -68,63 +68,67 @@ __Prérequis :__
 ### Software (WIP)
 
 
-1. Installer Raspbian sur la carte microSD et procéder à toutes les mises à jours
+1. Installer Raspbian sur la carte microSD et procéder à toutes les mises à jour  
+ `sudo apt-get update `  
+ `sudo apt-get dist-upgrade `  
+ `sudo rpi-update `  ( Je déconseille celle-ci car elle a ruiné la résolution de mon écran, j'ai du réinstaller rasbian pour retrouver un setup fonctionnel)
+ Puis reboot  
+ 
+0. Configurations sur raspbian
+La plupart de ces configurations se font soit depuis l'interface graphique soit via la console en tapant `sudo raspi-config`
+* Connexion au réseau internet
+* Configuration du hostname (utile lorsqu'on ne connait pas à priori l'adresse IP)
+* Clavier en FR
+* Locale en FR / France/ UTF8
+* Timezone Europe/Paris
+* (Wifi country FR)
+* Enable Camera + reboot
+* Enable SSH + reboot
+* Enable I2C + reboot
+* Underscan = disabled (j'avais des bordures inutilisées sur l'écran)
+* Changement du mot de passe de l'utilisateur `pi`  
+`sudo passwd pi` puis saisie 2 fois du nouveau mot de passe  
+`sudo reboot`
+* extension du filesystem pour occuper la totalité de la carte mémoire  
+`sudo raspi-config`  
+(pensez à vérifier régulièrement que les configurations sont correctement prises en compte `sudo reboot`)
+* installation du driver v4l2 (Attention il s'agit de la lettre L minuscule entre le 4 et le 2)  
+`sudo nano /etc/modules`  
+Ajouter la ligne suivante :  
+`bcm2835-v4l2`
+
 0. Installer/mettre à jour les librairies python : (version indicatives basées sur mon setup d'origine)
 
-  * pip (8.1.2)
-  * pygame (1.9.2a0) (déjà installé sur raspbian)
+  * pip pour installer les librairies (8.1.2) (déjà installé sur raspbian)
   * dropbox (4.0)  
   `sudo pip install dropbox`
-
   * facebook-sdk (2.0.0)  
   `sudo pip install facebook-sdk`
-  * gpiozero (1.3.2)
-  * picamera (1.13)
   * piexif (1.0.8) !! ATTENTION !! La version 1.0.10 ne fonctionne pas  
   `sudo pip install piexif==1.0.8`
-  * Pillow (2.6.1)  
-  `sudo pip install pillow`
   * qrcode (5.0.1)  
   `sudo pip install qrcode`
-  * RPi.GPIO (0.6.3)  
+  * pygame (1.9.2a0) (déjà installé sur raspbian)
+  * picamera (1.13) (déjà installé sur raspbian)
+  * Pillow (2.6.1)  (déjà installé sur raspbian)
+  `sudo pip install pillow`
+  * RPi.GPIO (0.6.3)  (déjà installé sur raspbian)
   `sudo pip install rpi.gpio`
-  * twython (3.3.0)  
+  * twython (3.3.0)  (déjà installé sur raspbian)
   `sudo pip install twython` 
 0. installer le script photobooth  
 `sudo git clone https://github.com/alexsolex/photobooth.git`
 0. enlever le fichier dummy.txt du répertoire shots (à corriger)  
 `sudo rm dummy.txt`
+0. Tester la caméra  
+`raspistill -o image.jpg` doit afficher la vue de la caméra pendant quelques secondes puis fermer
 
-#### Configurer le raspberry (TODO)
-
-1. configurer un hostname afin d'y accéder lorsqu'on ne connait pas son adresse ip :  
-`sudo nano /etc/hosts`  
-Changer le nom en  regard de l'adresse 127.0.1.1 par celui qui vous convient :  
-`127.0.1.1       photobooth`  
-Puis remplacer le hostname
-`sudo nano /etc/hostname`  
-Et finalement  
-`sudo /etc/init.d/hostname.sh`  
-`sudo reboot`  
-
-0. Installer un mDNS pour diffuser le hostname sur le réseau  
-`sudo apt-get install avahi-daemon`
 
 0. Désinstaller la suite libreoffice ainsi que d'autres applications inutiles.  
 `sudo apt-get remove --purge libreoffice*`  
 `sudo apt-get clean`  
 `sudo apt-get autoremove`  
 
-0. Configurer la camera
-Brancher la picamera et lancer l'utilitaire `raspi-config` puis activer la camera (option 5 sur enable).  
-Redémarrer le raspberry pi.  
-Editer le fichier /etc/modules  
-`sudo nano /etc/modules`  
-Contenu de référence de ce fichier  
-`i2c-dev`  
-`bcm2835-v4l2`  
-
-0. 
 
 #### Configuration du photobooth
 
