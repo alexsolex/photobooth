@@ -377,7 +377,7 @@ class Capture(object):
         self.USEREVENT_BTNB             = USEREVENT + 5
         self.USEREVENT_TIMEOUT_SLIDE    = USEREVENT + 6
         
-        self.ticks = 0;
+        self.ticks = 0
 
         # pre-load the images to speed-up
         for image in [config.OWNER_LOGO]:
@@ -388,7 +388,7 @@ class Capture(object):
 
         #EVENTS FOR THE GPIO
         if USE_GPIO:
-            self.start_event_detection();
+            self.start_event_detection()
 
     def btn_pushed(self,channel):
         """a button on GPIO has been pushed"""
@@ -666,7 +666,7 @@ class Capture(object):
 
         #use it for display
         print("slideshow : Change picture : %s file"%picture)
-        self.CurrentSlide = picture;
+        self.CurrentSlide = picture
 
     def time_is_out(self,IdUserEvent):
         #clear the timer
@@ -721,12 +721,12 @@ class Capture(object):
                         if self.status == Status.WAIT:
                             #on démarre le shoot
                             self.start_timer(config.TIME_BEFORE_SHOOT)
-                            self.flash = True;
+                            self.flash = True
                             self.NextStatus = Status.SHOOT
                             
                         elif self.status == Status.READY:
                             self.start_timer(config.TIME_BEFORE_SHOOT)
-                            self.flash = True;
+                            self.flash = True
                             self.NextStatus = Status.SHOOT
                         
                         elif self.status == Status.SHOOT:
