@@ -80,7 +80,7 @@ La plupart de ces configurations se font soit depuis l'interface graphique soit 
 * Configuration du hostname (utile lorsqu'on ne connait pas à priori l'adresse IP)
 * Clavier en FR
 * Locale en FR / France/ UTF8
-* Timezone Europe/Paris
+* Timezone Europe/Paris (très important étant donné que les photos seront horodatées avec l'heure système)
 * (Wifi country FR)
 * Enable Camera + reboot
 * Enable SSH + reboot
@@ -97,7 +97,7 @@ La plupart de ces configurations se font soit depuis l'interface graphique soit 
 Ajouter la ligne suivante :  
 `bcm2835-v4l2`
 
-0. Installer/mettre à jour les librairies python : (version indicatives basées sur mon setup d'origine)
+3. Installer/mettre à jour les librairies python : (version indicatives basées sur mon setup d'origine)
 
   * pip pour installer les librairies (8.1.2) (déjà installé sur raspbian)
   * dropbox (4.0)  
@@ -110,11 +110,11 @@ Ajouter la ligne suivante :
   `sudo pip install qrcode`
   * pygame (1.9.2a0) (déjà installé sur raspbian)
   * picamera (1.13) (déjà installé sur raspbian)
-  * Pillow (2.6.1)  (déjà installé sur raspbian)
+  * Pillow (2.6.1)  (déjà installé sur raspbian)  
   `sudo pip install pillow`
-  * RPi.GPIO (0.6.3)  (déjà installé sur raspbian)
+  * RPi.GPIO (0.6.3)  (déjà installé sur raspbian)  
   `sudo pip install rpi.gpio`
-  * twython (3.3.0)  (déjà installé sur raspbian)
+  * twython (3.3.0)  (déjà installé sur raspbian)  
   `sudo pip install twython` 
 0. installer le script photobooth  
 `sudo git clone https://github.com/alexsolex/photobooth.git`
@@ -156,12 +156,11 @@ Editer le fichier `setup.py`, trouver et modifier les lignes comme suit
 > `dropboxToken = "coller_ici_le_token_généré_précédemment"`
 
 
-
 0. Lancer le photobooth automatiquement au démarrage (TODO)
 
 Editer le fichier /etc/rc.local et ajouter les commandes :  
->    `cd /home/pi/photoboothfolder`  
->    `sudo python photobooth.py`  
+>`cd /home/pi/photoboothfolder`  
+>`sudo python photobooth.py`  
 
 ### Hardware (WIP)
 
