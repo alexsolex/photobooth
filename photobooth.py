@@ -160,7 +160,7 @@ def Tweet(message, picturefile):
     try:	
         twitter.update_status(status = tweetmsg,media_ids = image_ids['media_id'])
     except Exception as e:
-        print e.msg
+        print e.message
 
     print "done !"
  
