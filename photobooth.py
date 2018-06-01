@@ -769,7 +769,7 @@ class Capture(object):
                             self.NextStatus = Status.WAIT
                             pygame.time.set_timer(self.USEREVENT_TIMEOUT_SLIDE,0)
 
-                        elif self.status in [ Status.WAIT, Status.READY, Status.SENT]:
+                        elif config.USE_SLIDESHOW and self.status in [ Status.WAIT, Status.READY, Status.SENT]:
                             self.NextStatus = Status.SLIDESHOW
                             pygame.time.set_timer(self.USEREVENT_TIMEOUT_SLIDE,1000 * config.TIMEOUT_NEXT_SLIDE)
                             pygame.time.set_timer(self.USEREVENT_TIMEOUT_GLOBAL,0)      # arrêt du timer global d'annulation

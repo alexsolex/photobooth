@@ -12,6 +12,10 @@ KEEP_ORIGINAL_PIC = False
 
 DISPLAY_IP_ADDRESS = False
 
+# To display pictures slideshow, use secondary button.
+# Set to True, to use the slideshow, False will prevent the use of slideshow
+USE_SLIDESHOW = True
+
 # We use Exif meta datas to store informations about the picture. Please set a comment to set in the exifs metas here
 PICTURE_EXIF_COMMENT = u"Photo prise par le Photobooth HackArdennes !"
 
