@@ -10,7 +10,7 @@ PHOTOS_PATH = "shots"
 # Keep the original picture with no photomontage
 KEEP_ORIGINAL_PIC = False
 
-DISPLAY_IP_ADDRESS = True
+DISPLAY_IP_ADDRESS = False
 
 # We use Exif meta datas to store informations about the picture. Please set a comment to set in the exifs metas here
 PICTURE_EXIF_COMMENT = u"Photo prise par le Photobooth HackArdennes !"
