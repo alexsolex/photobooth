@@ -95,7 +95,17 @@ La plupart de ces configurations se font soit depuis l'interface graphique soit 
 * installation du driver v4l2 (Attention il s'agit de la lettre L minuscule entre le 4 et le 2)  
 `sudo nano /etc/modules`  
 Ajouter la ligne suivante :  
-`bcm2835-v4l2`
+`bcm2835-v4l2`  
+* Préserver la carte SD en installant des logs dans la mémoire
+`sudo nano /etc/fstab`  
+ajouter  
+`tmpfs /var/log tmpfs defaults,noatime,nosuid,mode=0755,size=100m 0 0`
+On peut ajouter également les dossiers suivants :
+`tmpfs /tmp tmpfs defaults,noatime,nosuid,size=100m 0 0`  
+`tmpfs /var/tmp tmpfs defaults,noatime,nosuid,size=30m 0 0`  
+``tmpfs /var/log tmpfs defaults,noatime,nosuid,mode=0755,size=100m 0 0`  
+`tmpfs /var/run tmpfs defaults,noatime,nosuid,mode=0755,size=2m 0 0`  
+`tmpfs /var/spool/mqueue tmpfs defaults,noatime,nosuid,mode=0700,gid=12,size=30m 0 0`  
 
 3. Installer/mettre à jour les librairies python : (version indicatives basées sur mon setup d'origine)
 
@@ -122,7 +132,9 @@ Ajouter la ligne suivante :
 `sudo rm dummy.txt`
 0. Tester la caméra  
 `raspistill -o image.jpg` doit afficher la vue de la caméra pendant quelques secondes puis fermer
-
+0. Désactiver la led de la picamera(optionnel mais évite la chauffe)  
+Editer le fichier config `sudo nano /boot/config.txt`  
+Puis ajouter la ligne suivante à la fin : `disable_camera_led=1`
 
 0. Désinstaller la suite libreoffice ainsi que d'autres applications inutiles.  
 `sudo apt-get remove --purge libreoffice*`  
