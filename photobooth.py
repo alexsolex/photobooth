@@ -656,7 +656,7 @@ class Capture(object):
         list_pics = []
         for f in os.listdir(config.PHOTOS_PATH):
             fn = os.path.join( config.PHOTOS_PATH , f)
-            if os.stat(fn).st_size > 0 and not os.path.isdir(fn):
+            if os.stat(fn).st_size > 0 and not os.path.isdir(fn) and fn.endswith(".jpg"):
                 list_pics.append(fn)
         #pickup a random one
         if len(list_pics) > 0 :
