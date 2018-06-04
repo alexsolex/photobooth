@@ -185,7 +185,7 @@ Je n'expliquerais pas ici la construction du boitier, chacun pouvant le réalise
 * Les lampes s'allumeront pendant la prise de vue (pour adapter l'autofocus) ce qui éblouira les utilisateurs. Pensez-y dans la conception et adaptez la position des lumières pour un compromis éclairage suffisant, mais pas trop éblouissant.
 
 #### Câblage
-TODO : mettre un lien vers le schéma général de cablage
+ATTENTION : vous trouverez sur le net des schémas de numérotation du port GPIO correspondant à votre raspberry. 
 
 Relais pour le flash (3 fils):  
 \+ ---> pin #2 (5v PWR)  
@@ -199,3 +199,23 @@ Pin #7 (GPIO4)
 Bouton bleu (enregistrement / diaporama) :  
 Pin #8 (GPIO14)  
 Pin #9 (GND)
+
+Les boutons ont été câblés avec une résistance de tirage en série et un condensateur (valeur à préciser) pour éviter les parasites et les rebonds de contact (debounce)
+
+
+## Boitier
+Ce paragraphe est indicatif afin de vous donner des pistes sur sa réalisation.
+
+J'ai pour ma part réalisé le mien en DAO (autocad en licence etudiant/professeur). J'ai mesuré au pied à coulisse tous les encombrements des éléments à positionner (écran, boutons, lampes, prises usb et ethernet, prise femelle 200v et interrupteur), que j'ai redessiné sur autocad afin de prévoir les encombrement dans le boitier.
+
+Les plans ont été réalisés afin d'être utilisés par une découpe laser. 
+
+J'ai pris soin de connaitre l'encombrement maximum supporté par la découpe laser afin de pouvoir faire les découpe en un seul morceau. J'ai également demandé au fablab l'épaisseur (kerf) du laser (0.1mm dans mon cas). Ceci est utile car j'ai fait un assemblage de type "cross fingers" et il faut prendre en compte l'épaisseur de la découpe afin que les morceaux s'assemblent en forcant pour assurer le maintien.
+
+Pour dessiner les "cross fingers" j'ai utilisé un outil en ligne : https://makeabox.io ce qui est tout de même bien plus simple que le faire à la main :). Cet outil génère un fichier pdf qu'on peut réimporter dans autocad pour le modifier et y dessiner les autres parties à découper.
+
+Remarque : J'ai utilisé du médium 6mm qui était la limite que pouvait découper le laser en épaisseur (j'ai donc eut de la chance mais le fablab a du réutiliser un medium certainement de meilleure qualité). A de telles épaisseurs de découpe, le faisceau laser qui est conique a tendance à bruler plus la partie supérieur que la partie inférieure, ce qui engendre des découpes en biseau assez visibles. Cependant cela n'a pas empêché le montage final.
+
+Les plans que j'ai utilisé sont disponibles dans le dossier 'documentation' du dépôt.
+
+
